@@ -65,6 +65,11 @@
     } else if (unlockEl) unlockEl.pause();
   }
 
+  // ears hear loudness roughly by the square of the slider, so each step feels even (0.75 keeps its old level)
+  function level(v) { return 1.33 * v * v; }
+  // with everything off the master closes too, so reverb tails stop at once
+  function applyLevel() { if (ctx) master.gain.setTargetAtTime(musicOn || sfxOn ? level(volume) : 0, ctx.currentTime, 0.03); }
+
   function ensure() {
     if (!AC) return false;
     if (!ctx) {
@@ -73,7 +78,7 @@
       comp = ctx.createDynamicsCompressor();
       comp.threshold.value = -22; comp.knee.value = 12; comp.ratio.value = 2.5; comp.attack.value = 0.008; comp.release.value = 0.25;
       const makeup = ctx.createGain(); makeup.gain.value = 3.4;
-      master = ctx.createGain(); master.gain.value = volume;
+      master = ctx.createGain(); master.gain.value = level(volume);
       limiter = ctx.createDynamicsCompressor();
       limiter.threshold.value = -3; limiter.knee.value = 0; limiter.ratio.value = 20; limiter.attack.value = 0.002; limiter.release.value = 0.12;
       musicBus = ctx.createGain(); musicBus.gain.value = 0;
@@ -244,7 +249,7 @@
     const now = ctx.currentTime;
     musicBus.gain.cancelScheduledValues(now);
     musicBus.gain.setValueAtTime(musicBus.gain.value, now);
-    musicBus.gain.linearRampToValueAtTime(0.9, now + 2.5);
+    musicBus.gain.linearRampToValueAtTime(0.9, now + 0.8);
     if (!timer) {
       nextBar = now + 0.15; bar = 0;
       timer = setInterval(tick, 250);
@@ -256,7 +261,7 @@
     const now = ctx.currentTime;
     musicBus.gain.cancelScheduledValues(now);
     musicBus.gain.setValueAtTime(musicBus.gain.value, now);
-    musicBus.gain.linearRampToValueAtTime(0, now + 0.35);
+    musicBus.gain.linearRampToValueAtTime(0, now + 0.12);
     clearInterval(timer); timer = null;
   }
 
@@ -339,13 +344,14 @@
       if (opts.sfx != null) sfxOn = !!opts.sfx;
       if (opts.music != null) { musicOn = !!opts.music; musicOn ? startMusic() : stopMusic(); }
       mediaUnlock(musicOn || sfxOn);
+      applyLevel();
       emit();
     },
     setMusic(on) { this.enable({ music: on }); },
     setSfx(on) { this.enable({ sfx: on }); },
     setVolume(v) {
       volume = Math.min(1, Math.max(0, v));
-      if (ctx) master.gain.setTargetAtTime(volume, ctx.currentTime, 0.05);
+      applyLevel();
       save(); emit();
     },
     play

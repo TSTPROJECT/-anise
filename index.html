@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..600&family=Jost:wght@300;400;500&family=Noto+Serif+Thai:wght@300;400;500;600&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500&display=swap&text=%E3%83%9C%E3%83%BC%E3%83%89%E3%82%A5%E3%83%AF%E3%83%B3%E3%83%BB%E3%83%9F%E3%83%84%E3%82%AA%E3%83%BB%E3%82%A2%E3%83%A2%E3%83%B3%E3%83%A9%E3%83%80%E3%83%BC">
   <link rel="preload" as="image" href="assets/images/original/character-sheet.webp">
-  <link rel="stylesheet" href="css/anise.css?v=7">
+  <link rel="stylesheet" href="css/anise.css?v=9">
   <script>document.documentElement.classList.replace('no-js', 'js');</script>
 </head>
 <body>
@@ -490,17 +490,28 @@
 
   <!-- ===== Audio controls ===== -->
   <div class="audio-dock" role="group" aria-label="ควบคุมเสียง" data-audio-dock>
+    <p class="audio-dock__toast" data-audio-toast aria-hidden="true"></p>
+    <button class="audio-dock__btn audio-dock__btn--all" type="button" data-audio="all" aria-label="ปิดเสียงทั้งหมด">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4 9h4l5-4v14l-5-4H4Z" fill="currentColor"/>
+        <g class="audio-dock__waves" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M16 9.5a3.5 3.5 0 0 1 0 5"/><path d="M18.5 7a7 7 0 0 1 0 10"/></g>
+        <g class="audio-dock__x" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="m16 9.5 5 5M21 9.5l-5 5"/></g>
+      </svg>
+      <span class="audio-dock__label" data-all-label>ปิดเสียงอยู่</span>
+    </button>
+    <span class="audio-dock__sep" aria-hidden="true"></span>
     <button class="audio-dock__btn" type="button" aria-pressed="false" data-audio="music">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V6l10-2v12" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="6.5" cy="18" r="2.5" fill="currentColor"/><circle cx="16.5" cy="16" r="2.5" fill="currentColor"/></svg>
-      <span class="audio-dock__label">Music <b data-state>OFF</b></span>
+      <span class="audio-dock__label">เพลง</span><i class="audio-dock__dot" aria-hidden="true"></i>
     </button>
     <button class="audio-dock__btn" type="button" aria-pressed="false" data-audio="sfx">
       <svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-bell"/></svg>
-      <span class="audio-dock__label">Effects <b data-state>OFF</b></span>
+      <span class="audio-dock__label">เอฟเฟกต์</span><i class="audio-dock__dot" aria-hidden="true"></i>
     </button>
     <label class="audio-dock__vol">
       <span class="visually-hidden">ระดับเสียง</span>
       <input type="range" min="0" max="100" step="1" value="75" data-audio="volume" aria-valuetext="75%">
+      <output class="audio-dock__pct" data-vol-pct aria-hidden="true">75%</output>
     </label>
   </div>
 
@@ -526,10 +537,10 @@
 
   <div class="visually-hidden" role="status" aria-live="polite" data-announcer></div>
 
-  <script src="js/character-data.js?v=7" defer></script>
-  <script src="js/media-data.js?v=7" defer></script>
-  <script src="js/audio.js?v=7" defer></script>
-  <script src="js/cursor.js?v=7" defer></script>
-  <script src="js/main.js?v=7" defer></script>
+  <script src="js/character-data.js?v=9" defer></script>
+  <script src="js/media-data.js?v=9" defer></script>
+  <script src="js/audio.js?v=9" defer></script>
+  <script src="js/cursor.js?v=9" defer></script>
+  <script src="js/main.js?v=9" defer></script>
 </body>
 </html>

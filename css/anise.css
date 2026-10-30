@@ -848,24 +848,38 @@ a { color: var(--chocolate); }
   box-shadow: 0 16px 34px -20px rgba(34, 10, 0, .6);
 }
 @supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) { .audio-dock { background: rgba(251, 246, 239, .78); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); } }
-.audio-dock__btn { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 0 12px; border: 0; border-radius: 999px; background: none; cursor: pointer; color: var(--chocolate); transition: background-color .3s, color .3s; }
-.audio-dock__btn svg { width: 17px; height: 17px; flex: none; }
-.audio-dock__label { font-family: var(--f-label); font-size: .66rem; letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; }
-.audio-dock__label b { font-weight: 500; }
+.audio-dock__btn { position: relative; display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 0 12px; border: 0; border-radius: 999px; background: none; cursor: pointer; color: var(--text-3); transition: background-color .3s, color .3s; }
+.audio-dock__btn svg { width: 18px; height: 18px; flex: none; }
+.audio-dock__label { font-size: .8rem; font-weight: 500; white-space: nowrap; }
+.audio-dock__btn:not(.audio-dock__btn--all)[aria-pressed="false"] .audio-dock__label { text-decoration: line-through; text-decoration-color: rgba(122, 77, 64, .55); }
+.audio-dock__dot { width: 7px; height: 7px; border-radius: 50%; border: 1.5px solid currentColor; transition: background-color .3s; }
 .audio-dock__btn[aria-pressed="true"] { background: var(--chocolate); color: var(--caramel); }
-.audio-dock__btn:hover { background: rgba(237, 198, 147, .35); }
-.audio-dock__btn[aria-pressed="true"]:hover { background: var(--espresso); }
-.audio-dock__vol { display: flex; align-items: center; padding: 0 10px 0 6px; }
+.audio-dock__btn[aria-pressed="true"] .audio-dock__dot { background: var(--gold); border-color: var(--gold); box-shadow: 0 0 6px var(--gold); }
+.audio-dock__btn:hover { background: rgba(237, 198, 147, .35); color: var(--chocolate); }
+.audio-dock__btn[aria-pressed="true"]:hover { background: var(--espresso); color: var(--caramel); }
+.audio-dock__btn--all { color: var(--chocolate); }
+.audio-dock__x { display: none; }
+.audio-dock.is-silent .audio-dock__waves { display: none; }
+.audio-dock.is-silent .audio-dock__x { display: inline; }
+.audio-dock.is-silent .audio-dock__btn--all { color: var(--cocoa); }
+.audio-dock__sep { width: 1px; height: 24px; background: var(--line-strong); margin: 0 2px; }
+.audio-dock__vol { display: flex; align-items: center; gap: 6px; padding: 0 10px 0 6px; }
 .audio-dock__vol input { width: 84px; accent-color: var(--chocolate); cursor: pointer; height: 28px; }
+.audio-dock__pct { min-width: 3.2ch; font-family: var(--f-label); font-size: .74rem; color: var(--chocolate); text-align: right; }
+.audio-dock.is-silent .audio-dock__vol { opacity: .45; }
+.audio-dock__toast { position: absolute; right: 8px; bottom: calc(100% + 10px); margin: 0; padding: 6px 14px; border-radius: 999px; background: var(--chocolate); color: var(--paper); font-size: .84rem; white-space: nowrap; box-shadow: 0 10px 24px -14px rgba(34, 10, 0, .8); opacity: 0; transform: translateY(6px); transition: opacity .3s, transform .3s var(--ease); pointer-events: none; }
+.audio-dock__toast.is-on { opacity: 1; transform: none; }
 .audio-dock.is-playing [data-audio="music"] svg { animation: note-bob 1.8s var(--ease-soft) infinite; }
 .audio-dock.is-waiting [data-audio="music"] { animation: dock-glow 1.6s var(--ease-soft) infinite; }
 @keyframes dock-glow { 0%, 100% { box-shadow: 0 0 0 0 rgba(224, 155, 5, 0); } 50% { box-shadow: 0 0 0 4px rgba(224, 155, 5, .45); } }
 @keyframes note-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
-@media (max-width: 520px) {
-  .audio-dock__label { font-size: 0; letter-spacing: 0; }
-  .audio-dock__label b { font-size: .62rem; letter-spacing: .08em; }
-  .audio-dock__btn { padding: 0 10px; }
-  .audio-dock__vol input { width: 64px; }
+@media (max-width: 560px) {
+  .audio-dock { left: max(12px, env(safe-area-inset-left)); justify-content: space-between; }
+  .audio-dock__btn--all .audio-dock__label { display: none; }
+  .audio-dock__btn { padding: 0 9px; gap: 5px; }
+  .audio-dock__label { font-size: .74rem; }
+  .audio-dock__vol { padding: 0 6px 0 2px; }
+  .audio-dock__vol input { width: 58px; }
 }
 
 /* =====================================================================

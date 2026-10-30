@@ -803,8 +803,21 @@
   const dock = $('[data-audio-dock]');
   const musicBtn = $('[data-audio="music"]', dock);
   const sfxBtn = $('[data-audio="sfx"]', dock);
+  const allBtn = $('[data-audio="all"]', dock);
   const vol = $('[data-audio="volume"]', dock);
-  musicBtn.dataset.sfx = 'none'; sfxBtn.dataset.sfx = 'none';
+  const volPct = $('[data-vol-pct]', dock);
+  const toastEl = $('[data-audio-toast]', dock);
+  musicBtn.dataset.sfx = 'none'; sfxBtn.dataset.sfx = 'none'; allBtn.dataset.sfx = 'none';
+
+  // a short visible note beside the dock, so every press shows what changed
+  let toastTimer = 0;
+  function toast(msg) {
+    toastEl.textContent = msg;
+    toastEl.classList.add('is-on');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toastEl.classList.remove('is-on'), 1600);
+    announce(msg);
+  }
 
   // read the earlier choice before onChange below overwrites it with the current (off) state
   const wasMusic = store.get('anise-music') === '1';
@@ -813,30 +826,51 @@
   if (!Audio || !Audio.supported) {
     dock.hidden = true;
   } else {
+    // what the mute-all button brings back: the last mix that had sound, or both on
+    let lastMix = { music: wasMusic || !wasSfx, sfx: wasSfx || !wasMusic };
     Audio.onChange((st) => {
+      const silent = !st.musicOn && !st.sfxOn;
       musicBtn.setAttribute('aria-pressed', String(st.musicOn));
-      $('[data-state]', musicBtn).textContent = st.musicOn ? 'ON' : 'OFF';
+      musicBtn.setAttribute('aria-label', st.musicOn ? 'เพลง: เปิดอยู่ (กดเพื่อปิด)' : 'เพลง: ปิดอยู่ (กดเพื่อเปิด)');
       sfxBtn.setAttribute('aria-pressed', String(st.sfxOn));
-      $('[data-state]', sfxBtn).textContent = st.sfxOn ? 'ON' : 'OFF';
+      sfxBtn.setAttribute('aria-label', st.sfxOn ? 'เอฟเฟกต์: เปิดอยู่ (กดเพื่อปิด)' : 'เอฟเฟกต์: ปิดอยู่ (กดเพื่อเปิด)');
+      allBtn.setAttribute('aria-label', silent ? 'เปิดเสียง' : 'ปิดเสียงทั้งหมด');
+      $('[data-all-label]', allBtn).textContent = silent ? 'ปิดเสียงอยู่' : 'ปิดเสียง';
+      dock.classList.toggle('is-silent', silent);
       dock.classList.toggle('is-playing', st.musicOn);
       const pct = Math.round(st.volume * 100);
       if (+vol.value !== pct) vol.value = pct;
       vol.setAttribute('aria-valuetext', pct + '%');
-      if (st.musicOn || st.sfxOn) dock.classList.remove('is-waiting');
+      volPct.textContent = pct + '%';
+      if (!silent) { dock.classList.remove('is-waiting'); lastMix = { music: st.musicOn, sfx: st.sfxOn }; }
       store.set('anise-music', st.musicOn ? '1' : '0');
       store.set('anise-sfx', st.sfxOn ? '1' : '0');
     });
+    allBtn.addEventListener('click', () => {
+      const st = Audio.state;
+      if (st.musicOn || st.sfxOn) {
+        Audio.enable({ music: false, sfx: false });
+        toast('ปิดเสียงทั้งหมดแล้ว');
+      } else {
+        Audio.enable(lastMix);
+        if (lastMix.sfx) Audio.play('click');
+        toast('เปิดเสียงแล้ว');
+      }
+    });
     musicBtn.addEventListener('click', () => {
       Audio.setMusic(!Audio.state.musicOn);
-      announce(Audio.state.musicOn ? 'เปิดดนตรีประกอบ' : 'ปิดดนตรีประกอบ');
+      toast(Audio.state.musicOn ? 'เปิดเพลงแล้ว' : 'ปิดเพลงแล้ว');
     });
     sfxBtn.addEventListener('click', () => {
       const on = !Audio.state.sfxOn;
       Audio.setSfx(on);
       if (on) Audio.play('click');
-      announce(on ? 'เปิดเสียงเอฟเฟกต์' : 'ปิดเสียงเอฟเฟกต์');
+      toast(on ? 'เปิดเอฟเฟกต์แล้ว' : 'ปิดเอฟเฟกต์แล้ว');
     });
-    vol.addEventListener('input', () => Audio.setVolume(vol.value / 100));
+    vol.addEventListener('input', () => {
+      Audio.setVolume(vol.value / 100);
+      if (Audio.state.sfxOn && !Audio.state.musicOn) Audio.play('click');
+    });
     // returning in the same session (reload): browsers need a fresh press before audio may start,
     // so the visitor's earlier choice resumes on their first tap/click/key, and the Music button glows until then
     if (wasMusic || wasSfx) {
