@@ -13,8 +13,8 @@
   const AC = window.AudioContext || window.webkitAudioContext;
   const STORE = 'anise-audio';
 
-  let ctx = null, master, comp, musicBus, sfxBus, verb, verbSend;
-  let musicOn = false, sfxOn = false, volume = 0.6;
+  let ctx = null, master, comp, limiter, musicBus, sfxBus, verb, verbSend, unlockEl = null;
+  let musicOn = false, sfxOn = false, volume = 0.75;
   let timer = null, nextBar = 0, bar = 0, lastNote = 79;
   let voices = 0;
   const lastPlayed = Object.create(null);
@@ -41,22 +41,50 @@
     return buf;
   }
 
+  // iPhone/iPad: Web Audio is muted by the ring/silent switch unless the page plays as media.
+  // Declare a playback session (Safari 17+) and keep a silent <audio> element running while sound is on.
+  function silentWavUrl() {
+    const rate = 8000, n = rate / 2, buf = new ArrayBuffer(44 + n * 2), v = new DataView(buf);
+    const w = (o, s) => { for (let i = 0; i < s.length; i++) v.setUint8(o + i, s.charCodeAt(i)); };
+    w(0, 'RIFF'); v.setUint32(4, 36 + n * 2, true); w(8, 'WAVE'); w(12, 'fmt ');
+    v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, 1, true);
+    v.setUint32(24, rate, true); v.setUint32(28, rate * 2, true); v.setUint16(32, 2, true); v.setUint16(34, 16, true);
+    w(36, 'data'); v.setUint32(40, n * 2, true);
+    return URL.createObjectURL(new Blob([buf], { type: 'audio/wav' }));
+  }
+  function mediaUnlock(on) {
+    try { if (navigator.audioSession) navigator.audioSession.type = on ? 'playback' : 'auto'; } catch (e) { /* ignore */ }
+    if (!/iPad|iPhone|iPod/.test(navigator.userAgent) && !(navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) return;
+    if (on) {
+      if (!unlockEl) {
+        unlockEl = document.createElement('audio');
+        unlockEl.src = silentWavUrl(); unlockEl.loop = true;
+        unlockEl.setAttribute('playsinline', ''); unlockEl.setAttribute('x-webkit-airplay', 'deny');
+      }
+      const p = unlockEl.play(); if (p && p.catch) p.catch(() => {});
+    } else if (unlockEl) unlockEl.pause();
+  }
+
   function ensure() {
     if (!AC) return false;
     if (!ctx) {
       ctx = new AC();
+      // glue compressor → make-up gain → volume → brick-wall limiter (loud enough, never clips)
       comp = ctx.createDynamicsCompressor();
-      comp.threshold.value = -18; comp.knee.value = 18; comp.ratio.value = 3; comp.attack.value = 0.01; comp.release.value = 0.3;
-      master = ctx.createGain(); master.gain.value = volume * volume;
+      comp.threshold.value = -22; comp.knee.value = 12; comp.ratio.value = 2.5; comp.attack.value = 0.008; comp.release.value = 0.25;
+      const makeup = ctx.createGain(); makeup.gain.value = 3.4;
+      master = ctx.createGain(); master.gain.value = volume;
+      limiter = ctx.createDynamicsCompressor();
+      limiter.threshold.value = -3; limiter.knee.value = 0; limiter.ratio.value = 20; limiter.attack.value = 0.002; limiter.release.value = 0.12;
       musicBus = ctx.createGain(); musicBus.gain.value = 0;
-      sfxBus = ctx.createGain(); sfxBus.gain.value = 0.55;
+      sfxBus = ctx.createGain(); sfxBus.gain.value = 0.65;
       verb = ctx.createConvolver(); verb.buffer = impulse(3.2, 2.6);
       verbSend = ctx.createGain(); verbSend.gain.value = 0.32;
       const lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 7200;
       musicBus.connect(lp); sfxBus.connect(lp);
       musicBus.connect(verbSend); sfxBus.connect(verbSend);
       verbSend.connect(verb); verb.connect(lp);
-      lp.connect(comp); comp.connect(master); master.connect(ctx.destination);
+      lp.connect(comp); comp.connect(makeup); makeup.connect(master); master.connect(limiter); limiter.connect(ctx.destination);
       document.addEventListener('visibilitychange', () => {
         if (!ctx) return;
         if (document.hidden) ctx.suspend();
@@ -197,7 +225,7 @@
         note = tones.reduce((a, b) => (Math.abs(b - lastNote) < Math.abs(a - lastNote) ? b : a));
       }
       lastNote = note;
-      musicBox(t + e * (BEAT / 2) + (Math.random() * 0.02), note, 0.05 + Math.random() * 0.02, musicBus);
+      musicBox(t + e * (BEAT / 2) + (Math.random() * 0.02), note, 0.075 + Math.random() * 0.025, musicBus);
     }
     // the shop bell, softly, at the top of every other phrase
     if (n % 16 === 0) bell(t + 0.02, mtof(84), 0.03, musicBus, 3.2);
@@ -310,13 +338,14 @@
       if (!ensure()) { emit(); return; }
       if (opts.sfx != null) sfxOn = !!opts.sfx;
       if (opts.music != null) { musicOn = !!opts.music; musicOn ? startMusic() : stopMusic(); }
+      mediaUnlock(musicOn || sfxOn);
       emit();
     },
     setMusic(on) { this.enable({ music: on }); },
     setSfx(on) { this.enable({ sfx: on }); },
     setVolume(v) {
       volume = Math.min(1, Math.max(0, v));
-      if (ctx) master.gain.setTargetAtTime(volume * volume, ctx.currentTime, 0.05);
+      if (ctx) master.gain.setTargetAtTime(volume, ctx.currentTime, 0.05);
       save(); emit();
     },
     play
