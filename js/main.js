@@ -64,9 +64,9 @@
   C.names.forEach((n, i) => {
     const feature = i === C.names.length - 1;
     namesList.append(h('div', { class: 'names__item' + (feature ? ' names__item--feature' : '') }, [
-      h('dt', { text: n.label }),
+      n.label ? h('dt', { text: n.label }) : null,
       h('dd', { lang: n.lang || null, text: n.value })
-    ]));
+    ].filter(Boolean)));
   });
 
   // Palette
@@ -156,14 +156,14 @@
   }
   creditRows(C.credits.original, $('[data-credits-original]'));
   creditRows(C.credits.furry, $('[data-credits-furry]'));
+  creditRows(C.credits.artists, $('[data-credits-artists]'));
   $('[data-credit-site]').textContent = C.credits.website;
   const usage = $('[data-usage]');
   C.credits.usage.forEach((u) => usage.append(h('li', { lang: 'en', text: u })));
 
   const CREDIT_LINE = {
     original: C.credits.original.slice(0, 2).map((c) => c.label + ': ' + c.value).join(' · '),
-    furry: C.credits.furry.map((c) => c.label + ': ' + c.value).join(' · '),
-    palette: 'ภาพพาเลทสีประจำตัว · Original Form'
+    furry: C.credits.furry.slice(0, 2).map((c) => c.label + ': ' + c.value).join(' · ')
   };
 
   /* =========================================================
@@ -290,7 +290,7 @@
     $('[data-lb-title]').textContent = item.title;
     $('[data-lb-kind]').textContent = item.kind;
     $('[data-lb-badge]').textContent = M[form].label;
-    $('[data-lb-credit]').textContent = CREDIT_LINE[item.credit] || '';
+    $('[data-lb-credit]').textContent = CREDIT_LINE[item.credit] || item.credit || '';
     $('[data-lb-full]').href = item.src;
     const single = list.length < 2;
     $('[data-lb-prev]').hidden = single;

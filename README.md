@@ -15,7 +15,7 @@ js/media-data.js         Artwork list per form (Original / Furry)
 js/audio.js              Synthesized music + sound effects (Web Audio API)
 js/cursor.js             Anise signature cursor (fine pointers only)
 js/main.js               Rendering and interactions
-assets/images/           original/ · furry/ · palette/  (full files + -960.webp display copies)
+assets/images/           original/ · furry/  (full files + -960.webp display copies)
 assets/favicon.svg
 ```
 

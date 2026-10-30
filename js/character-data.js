@@ -38,7 +38,6 @@
       { label: 'ตำแหน่ง', en: 'Role', value: 'หัวหน้าผู้ช่วยแล็บอบขนม' },
       { label: 'สีประจำตัว', en: 'Signature Colour', value: 'Creme Caramel Palette' },
       { label: 'สไตล์การแต่งตัว', en: 'Fashion', value: 'Sawako style' },
-      { label: 'วันเกิด', en: 'Birthday', value: '14 พฤศจิกายน' },
       { label: 'ราศี', en: 'Zodiac', value: 'พิจิก' },
       { label: 'สัดส่วนรูปร่าง (cm.)', en: 'Measurements', value: 'B92-W58-H91' }
     ],
@@ -49,7 +48,8 @@
       { label: 'ชื่อสากล', value: 'Amolrada Mitsuo Beaudouin' },
       { label: 'ชื่อภาษาญี่ปุ่น', value: 'ボードゥワン・ミツオ・アモンラダー', lang: 'ja' },
       { label: 'ชื่อร้าน', value: '"La Cloche" (ลา คลอช)' },
-      { label: 'ชื่อชุดข้อมูลระดับ Masterpiece', value: '"สัจจะ แห่งขนมหวานและจิตวิญญาณ"' }
+      // เจ้าของตัวละครขอให้แสดงเฉพาะชื่อ ไม่ต้องมีหัวข้อ
+      { label: null, value: 'สัจจะ แห่งขนมหวานและจิตวิญญาณ' }
     ],
 
     scent: {
@@ -129,7 +129,14 @@
       // ตามข้อความที่ปรากฏบนภาพ Furry Design
       furry: [
         { label: 'Adopt Design', value: 'roro090(TH)' },
-        { label: 'Adopt Owner', value: 'Jwala DuHin' }
+        { label: 'Adopt Owner', value: 'Jwala DuHin' },
+        { label: 'Artist Facebook', value: 'facebook.com/co989', href: 'https://www.facebook.com/co989' }
+      ],
+      // นักวาดเพิ่มเติม — เรียงตามลำดับที่เจ้าของตัวละครส่งมา
+      artists: [
+        { label: 'Artist', value: 'SJ Seojun', href: 'https://www.facebook.com/khwiinehethr?locale=th_TH' },
+        { label: 'Artist', value: 'Back Doll', href: 'https://www.facebook.com/profile.php?id=61594294486887&locale=th_TH' },
+        { label: 'Artist', value: 'Ratore Yuio', href: 'https://www.facebook.com/profile.php?id=61582846755622&locale=th_TH' }
       ],
       website: 'TST Project',
       // ข้อความบนภาพต้นฉบับ (Kitty Catty)

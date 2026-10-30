@@ -10,14 +10,14 @@
   <meta property="og:title" content="La Cloche — Anise">
   <meta property="og:description" content="Character Showcase ของ Anise · สัจจะ แห่งขนมหวานและจิตวิญญาณ · TST Project">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="assets/images/original/chibi-adoptable-960.webp">
+  <meta property="og:image" content="assets/images/original/chibi-canele-960.webp">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..600&family=Jost:wght@300;400;500&family=Noto+Serif+Thai:wght@300;400;500;600&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500&display=swap&text=%E3%83%9C%E3%83%BC%E3%83%89%E3%82%A5%E3%83%AF%E3%83%B3%E3%83%BB%E3%83%9F%E3%83%84%E3%82%AA%E3%83%BB%E3%82%A2%E3%83%A2%E3%83%B3%E3%83%A9%E3%83%80%E3%83%BC">
-  <link rel="preload" as="image" href="assets/images/original/character-sheet.webp">
-  <link rel="stylesheet" href="css/anise.css?v=9">
+  <link rel="preload" as="image" href="assets/images/original/full-body.jpg">
+  <link rel="stylesheet" href="css/anise.css?v=10">
   <script>document.documentElement.classList.replace('no-js', 'js');</script>
 </head>
 <body>
@@ -202,7 +202,7 @@
         </h1>
         <p class="hero__fullname" data-bind="fullNameTh"></p>
         <p class="hero__intl" lang="en" data-bind="fullNameIntl"></p>
-        <p class="hero__masterpiece"><span class="hero__mp-label">Masterpiece</span><span data-bind="masterpieceTitle"></span></p>
+        <p class="hero__masterpiece"><span data-bind="masterpieceTitle"></span></p>
 
         <div class="hero__select">
           <p class="hero__select-label"><span lang="fr">Choisir la forme</span> — เลือกรูปแบบตัวละคร</p>
@@ -218,7 +218,7 @@
         <div class="arch" data-hero-frame data-parallax="-0.05">
           <span class="arch__bell" aria-hidden="true"><svg><use href="#i-bell"/></svg></span>
           <div class="arch__window">
-            <img class="arch__img" data-hero-img src="assets/images/original/character-sheet.webp" width="2000" height="1415" alt="Anise ร่าง Original — ภาพเต็มตัวจาก Character Sheet" fetchpriority="high" decoding="async">
+            <img class="arch__img" data-hero-img src="assets/images/original/full-body.jpg" width="1230" height="1500" alt="Anise ร่าง Original — ภาพเต็มตัว" fetchpriority="high" decoding="async">
           </div>
           <span class="arch__line arch__line--1" aria-hidden="true"></span>
           <span class="arch__line arch__line--2" aria-hidden="true"></span>
@@ -249,7 +249,7 @@
         <aside class="profil__side reveal">
           <figure class="portrait">
             <button class="portrait__btn" type="button" data-open-portrait data-cursor="gallery" aria-label="ขยายภาพตัวละคร">
-              <img data-portrait-img src="assets/images/original/chibi-adoptable-960.webp" width="679" height="960" alt="Anise ร่าง Original — ภาพ Chibi Adoptable" loading="lazy" decoding="async">
+              <img data-portrait-img src="assets/images/original/chibi-canele-960.webp" width="787" height="960" alt="Anise ร่าง Original — ภาพ Chibi กับขนมคานาเล่" loading="lazy" decoding="async">
             </button>
             <figcaption><span class="badge" data-form-badge>Original Form</span> <span data-portrait-credit></span></figcaption>
           </figure>
@@ -460,7 +460,11 @@
         <article class="credit-card reveal">
           <p class="credit-card__eyebrow"><span lang="fr">Forme II</span> · Furry Form</p>
           <dl data-credits-furry></dl>
-          <p class="credit-card__note">เครดิตตามข้อความที่ปรากฏบนภาพ Furry Design</p>
+          <p class="credit-card__note">Adopt Design / Adopt Owner ตามข้อความที่ปรากฏบนภาพ Furry Design</p>
+        </article>
+        <article class="credit-card reveal">
+          <p class="credit-card__eyebrow"><span lang="fr">Artistes</span> · นักวาดเพิ่มเติม</p>
+          <dl data-credits-artists></dl>
         </article>
         <article class="credit-card credit-card--site reveal">
           <p class="credit-card__eyebrow"><span lang="fr">Site</span> · Website</p>
@@ -537,10 +541,10 @@
 
   <div class="visually-hidden" role="status" aria-live="polite" data-announcer></div>
 
-  <script src="js/character-data.js?v=9" defer></script>
-  <script src="js/media-data.js?v=9" defer></script>
-  <script src="js/audio.js?v=9" defer></script>
-  <script src="js/cursor.js?v=9" defer></script>
-  <script src="js/main.js?v=9" defer></script>
+  <script src="js/character-data.js?v=10" defer></script>
+  <script src="js/media-data.js?v=10" defer></script>
+  <script src="js/audio.js?v=10" defer></script>
+  <script src="js/cursor.js?v=10" defer></script>
+  <script src="js/main.js?v=10" defer></script>
 </body>
 </html>
