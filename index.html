@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="th" class="no-js" data-form="original">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>La Cloche — Anise · Character Showcase</title>
+  <meta name="description" content="La Cloche — เว็บไซต์แนะนำตัวละคร Anise (อมลรดา มิตสึโอะ โบดุแอง) · สัจจะ แห่งขนมหวานและจิตวิญญาณ · Website by TST Project">
+  <meta name="theme-color" content="#f8efe3">
+  <meta name="color-scheme" content="light">
+  <meta property="og:title" content="La Cloche — Anise">
+  <meta property="og:description" content="Character Showcase ของ Anise · สัจจะ แห่งขนมหวานและจิตวิญญาณ · TST Project">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/images/original/chibi-adoptable-960.webp">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..600&family=Jost:wght@300;400;500&family=Noto+Serif+Thai:wght@300;400;500;600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500&display=swap&text=%E3%83%9C%E3%83%BC%E3%83%89%E3%82%A5%E3%83%AF%E3%83%B3%E3%83%BB%E3%83%9F%E3%83%84%E3%82%AA%E3%83%BB%E3%82%A2%E3%83%A2%E3%83%B3%E3%83%A9%E3%83%80%E3%83%BC">
+  <link rel="preload" as="image" href="assets/images/original/character-sheet.webp">
+  <link rel="stylesheet" href="css/anise.css?v=5">
+  <script>document.documentElement.classList.replace('no-js', 'js');</script>
+</head>
+<body>
+  <a class="skip-link" href="#profil">ข้ามไปยังข้อมูลตัวละคร</a>
+
+  <!-- ===== SVG sprite: ornaments drawn for this site ===== -->
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="g-gold" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#edc693"/><stop offset=".55" stop-color="#e09b05"/><stop offset="1" stop-color="#c99d60"/>
+      </linearGradient>
+      <linearGradient id="g-gem" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#201a07"/><stop offset=".5" stop-color="#597641"/><stop offset="1" stop-color="#e09b05"/>
+      </linearGradient>
+      <linearGradient id="g-canele" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#2a0e04"/><stop offset=".28" stop-color="#7a3a1c"/><stop offset=".52" stop-color="#b8692e"/><stop offset=".78" stop-color="#6a2e14"/><stop offset="1" stop-color="#220a00"/>
+      </linearGradient>
+      <linearGradient id="g-glass" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".2" stop-color="#fff" stop-opacity=".1"/><stop offset=".75" stop-color="#fff" stop-opacity=".04"/><stop offset="1" stop-color="#fff" stop-opacity=".35"/>
+      </linearGradient>
+    </defs>
+
+    <symbol id="i-bell" viewBox="0 0 64 64">
+      <path fill="currentColor" d="M32 6a4 4 0 0 1 4 4v2.4c8.6 1.8 14 9.6 14 19.6v9.5l5.5 7.5H8.5L14 41.5V32c0-10 5.4-17.8 14-19.6V10a4 4 0 0 1 4-4Z"/>
+      <circle fill="currentColor" cx="32" cy="54.5" r="4.5"/>
+    </symbol>
+
+    <symbol id="i-praja" viewBox="0 0 24 24">
+      <path d="M12 1.5 22.5 12 12 22.5 1.5 12Z" fill="none" stroke="currentColor" stroke-width="1"/>
+      <g fill="currentColor">
+        <path d="M12 4.6c1.7 2.1 1.9 4.1 0 6.2-1.9-2.1-1.7-4.1 0-6.2Z"/>
+        <path d="M12 4.6c1.7 2.1 1.9 4.1 0 6.2-1.9-2.1-1.7-4.1 0-6.2Z" transform="rotate(90 12 12)"/>
+        <path d="M12 4.6c1.7 2.1 1.9 4.1 0 6.2-1.9-2.1-1.7-4.1 0-6.2Z" transform="rotate(180 12 12)"/>
+        <path d="M12 4.6c1.7 2.1 1.9 4.1 0 6.2-1.9-2.1-1.7-4.1 0-6.2Z" transform="rotate(270 12 12)"/>
+        <circle cx="12" cy="12" r="1.1"/>
+      </g>
+    </symbol>
+
+    <symbol id="i-flourish" viewBox="0 0 240 24">
+      <g fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round">
+        <path d="M104 12H64c-10 0-14-7-8-9.5 5-2 8.5 4 3.5 6.5"/>
+        <path d="M64 12c-14 0-22 6-34 6-9 0-15-3-26-6"/>
+        <path d="M136 12h40c10 0 14-7 8-9.5-5-2-8.5 4-3.5 6.5"/>
+        <path d="M176 12c14 0 22 6 34 6 9 0 15-3 26-6"/>
+      </g>
+      <use href="#i-praja" x="108" y="0" width="24" height="24"/>
+    </symbol>
+
+    <symbol id="i-lotus" viewBox="0 0 64 48">
+      <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M32 40C26 32 25 18 32 6c7 12 6 26 0 34Z"/>
+        <path d="M32 40C24 37 16 28 14 16c9 3 16 12 18 24Z"/>
+        <path d="M32 40c8-3 16-12 18-24-9 3-16 12-18 24Z"/>
+        <path d="M30 41C20 41 9 36 4 27c10-1 19 5 26 14Z"/>
+        <path d="M34 41c10 0 21-5 26-14-10-1-19 5-26 14Z"/>
+        <path d="M10 45h44"/>
+      </g>
+    </symbol>
+
+    <symbol id="i-canele" viewBox="0 0 64 64">
+      <path fill="url(#g-canele)" d="M15 54c-1.5-10-.6-22 3.5-33C24 17 40 17 45.5 21c4.1 11 5 23 3.5 33-5.5 3.4-28.5 3.4-34 0Z"/>
+      <g fill="none" stroke="#1c0700" stroke-opacity=".55" stroke-width="1.2">
+        <path d="M22 20.5c-2 10-3 22-2 35"/><path d="M28 19c-1 11-1.5 24-1 37.5"/><path d="M36 19c1 11 1.5 24 1 37.5"/><path d="M42 20.5c2 10 3 22 2 35"/>
+      </g>
+      <ellipse cx="32" cy="20.3" rx="13.6" ry="4" fill="#2a0e04"/>
+      <ellipse cx="32" cy="19.8" rx="7" ry="2" fill="#8a4420"/>
+      <path d="M24.4 25c-1 8-1.2 17-.6 26" fill="none" stroke="#edc693" stroke-opacity=".6" stroke-width="1.6" stroke-linecap="round"/>
+    </symbol>
+
+    <symbol id="i-bow" viewBox="0 0 48 32">
+      <path fill="#201a07" d="M24 13C17 4 6 2 3 7c-3 5 1 13 9 12 4-.5 8-2.5 12-4.5Z"/>
+      <path fill="#201a07" d="M24 13c7-9 18-11 21-6 3 5-1 13-9 12-4-.5-8-2.5-12-4.5Z"/>
+      <path fill="#201a07" d="M21 16 13 30l5-1 3 3 4-15Zm6 0 8 14-5-1-3 3-4-15Z"/>
+      <g fill="none" stroke="#cfbeb6" stroke-opacity=".55" stroke-width=".7"><path d="M21 12C16 7 9 5 6 8"/><path d="M27 12c5-5 12-7 15-4"/></g>
+      <ellipse cx="24" cy="14" rx="5" ry="6" fill="url(#g-gem)" stroke="#edc693" stroke-width="1.2"/>
+      <ellipse cx="22.6" cy="11.8" rx="1.3" ry="1.8" fill="#fff" fill-opacity=".7"/>
+    </symbol>
+
+    <symbol id="i-roman1" viewBox="0 0 24 24"><path d="M12 5v14M8 5h8M8 19h8" stroke="currentColor" stroke-width="1.4" fill="none"/></symbol>
+  </svg>
+
+  <!-- ===== Custom cursor root is created by js/cursor.js (decorative only) ===== -->
+
+  <!-- ===== Gate / Loading ===== -->
+  <div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-title" aria-describedby="gate-note" hidden>
+    <div class="gate__door gate__door--l" aria-hidden="true"><span class="gate__panel"></span><span class="gate__panel"></span><span class="gate__knob"></span></div>
+    <div class="gate__door gate__door--r" aria-hidden="true"><span class="gate__panel"></span><span class="gate__panel"></span><span class="gate__knob"></span></div>
+    <div class="gate__inner">
+      <div class="gate__bell" aria-hidden="true">
+        <svg viewBox="0 0 120 150" width="96" height="120">
+          <path d="M60 0v26" stroke="#c99d60" stroke-width="1.2"/>
+          <g transform="translate(36 18) scale(1)"><use href="#i-bow" width="48" height="32"/></g>
+          <g class="gate__bell-swing">
+            <path d="M60 44a5 5 0 0 1 5 5v3c11 2.3 18 12.3 18 25v12l7 9.6H30l7-9.6V77c0-12.7 7-22.7 18-25v-3a5 5 0 0 1 5-5Z" fill="url(#g-gold)"/>
+            <path d="M47 76c0-9 4-16 10-19" stroke="#fff" stroke-opacity=".55" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <circle cx="60" cy="108" r="6" fill="#c99d60"/>
+          </g>
+        </svg>
+      </div>
+      <p class="gate__eyebrow" lang="fr">Pâtisserie d'antan</p>
+      <p class="gate__title" id="gate-title"><span lang="fr">La Cloche</span></p>
+      <p class="gate__name"><span lang="en">Anise</span> <span class="gate__name-th">· อานิส</span></p>
+      <svg class="gate__flourish" aria-hidden="true"><use href="#i-flourish"/></svg>
+      <div class="gate__loading" data-gate-loading>
+        <span class="gate__bar"><i data-gate-bar></i></span>
+        <span class="gate__loading-text">กำลังเตรียมหน้าร้าน…</span>
+      </div>
+      <div class="gate__actions" data-gate-actions>
+        <button class="btn btn--gold" type="button" data-enter="sound">
+          <span lang="fr">Entrer avec le son</span><small>เข้าชมพร้อมเสียงดนตรี</small>
+        </button>
+        <button class="btn btn--ghost" type="button" data-enter="silent">
+          <span lang="fr">Entrer en silence</span><small>เข้าชมแบบไม่มีเสียง</small>
+        </button>
+      </div>
+      <p class="gate__note" id="gate-note">เสียงจะเริ่มหลังจากคุณกดปุ่มเท่านั้น และเปิด/ปิดได้ทุกเมื่อที่มุมขวาล่าง</p>
+    </div>
+  </div>
+
+  <!-- ===== Navigation ===== -->
+  <header class="topbar" data-topbar>
+    <a class="topbar__brand" href="#accueil" data-nav>
+      <svg aria-hidden="true"><use href="#i-bell"/></svg>
+      <span lang="fr">La Cloche</span>
+    </a>
+    <nav class="topbar__nav" aria-label="เมนูหลัก">
+      <ul class="navlist" data-navlist>
+        <li><a href="#profil" data-nav><span lang="fr">Profil</span><small>โปรไฟล์</small></a></li>
+        <li><a href="#histoire" data-nav><span lang="fr">Histoire</span><small>ภูมิหลัง</small></a></li>
+        <li><a href="#caractere" data-nav><span lang="fr">Caractère</span><small>นิสัย · ความสามารถ</small></a></li>
+        <li><a href="#patisserie" data-nav><span lang="fr">Pâtisserie</span><small>ร้าน La Cloche</small></a></li>
+        <li><a href="#parfum" data-nav><span lang="fr">Parfum</span><small>กลิ่นกาย</small></a></li>
+        <li><a href="#galerie" data-nav><span lang="fr">Galerie</span><small>แกลเลอรี</small></a></li>
+        <li><a href="#credits" data-nav><span lang="fr">Crédits</span><small>เครดิต</small></a></li>
+      </ul>
+    </nav>
+    <div class="topbar__form" data-form-switch-slot="nav"></div>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="drawer" data-menu-btn>
+      <span class="menu-btn__lines" aria-hidden="true"><i></i><i></i></span>
+      <span class="menu-btn__label">Menu</span>
+    </button>
+  </header>
+
+  <div class="drawer" id="drawer" data-drawer hidden>
+    <div class="drawer__scrim" data-drawer-close></div>
+    <div class="drawer__sheet" role="dialog" aria-modal="true" aria-label="เมนู">
+      <p class="drawer__eyebrow" lang="fr">La Carte</p>
+      <ul class="drawer__list">
+        <li><a href="#accueil" data-nav><em>01</em><span lang="fr">Accueil</span><small>ต้อนรับ</small></a></li>
+        <li><a href="#profil" data-nav><em>02</em><span lang="fr">Profil</span><small>โปรไฟล์</small></a></li>
+        <li><a href="#histoire" data-nav><em>03</em><span lang="fr">Histoire</span><small>ภูมิหลัง</small></a></li>
+        <li><a href="#caractere" data-nav><em>04</em><span lang="fr">Caractère</span><small>นิสัย · ความสามารถ</small></a></li>
+        <li><a href="#patisserie" data-nav><em>05</em><span lang="fr">Pâtisserie</span><small>ร้าน La Cloche</small></a></li>
+        <li><a href="#parfum" data-nav><em>06</em><span lang="fr">Parfum</span><small>กลิ่นกาย</small></a></li>
+        <li><a href="#galerie" data-nav><em>07</em><span lang="fr">Galerie</span><small>แกลเลอรี</small></a></li>
+        <li><a href="#credits" data-nav><em>08</em><span lang="fr">Crédits</span><small>เครดิต</small></a></li>
+      </ul>
+      <div class="drawer__form" data-form-switch-slot="drawer"></div>
+      <button class="drawer__close" type="button" data-drawer-close>ปิดเมนู</button>
+    </div>
+  </div>
+
+  <main id="main">
+    <noscript>
+      <p class="noscript">เว็บไซต์นี้ต้องใช้ JavaScript ในการแสดงข้อมูลตัวละคร กรุณาเปิดใช้งาน JavaScript</p>
+    </noscript>
+
+    <!-- ===================== 01 · ACCUEIL ===================== -->
+    <section class="hero" id="accueil" aria-labelledby="hero-title">
+      <div class="hero__bg" aria-hidden="true">
+        <span class="hero__script" data-parallax="0.12" lang="fr">La Cloche</span>
+        <svg class="hero__lotus" data-parallax="-0.06"><use href="#i-lotus"/></svg>
+        <svg class="hero__praja hero__praja--a" data-parallax="0.2"><use href="#i-praja"/></svg>
+        <svg class="hero__praja hero__praja--b" data-parallax="-0.14"><use href="#i-praja"/></svg>
+      </div>
+
+      <div class="hero__copy">
+        <p class="eyebrow"><span lang="fr">Pâtisserie d'antan</span> · <span lang="fr">La Cloche</span></p>
+        <h1 class="hero__title" id="hero-title">
+          <span class="hero__anise" lang="en">Anise</span>
+          <span class="hero__nick" data-bind="nickname"></span>
+        </h1>
+        <p class="hero__fullname" data-bind="fullNameTh"></p>
+        <p class="hero__intl" lang="en" data-bind="fullNameIntl"></p>
+        <p class="hero__masterpiece"><span class="hero__mp-label">Masterpiece</span><span data-bind="masterpieceTitle"></span></p>
+
+        <div class="hero__select">
+          <p class="hero__select-label"><span lang="fr">Choisir la forme</span> — เลือกรูปแบบตัวละคร</p>
+          <div data-form-switch-slot="hero"></div>
+        </div>
+
+        <a class="btn btn--dark hero__cta" href="#profil" data-nav>
+          <span lang="fr">Découvrir Anise</span><small>ทำความรู้จัก</small>
+        </a>
+      </div>
+
+      <div class="hero__art">
+        <div class="arch" data-hero-frame data-parallax="-0.05">
+          <span class="arch__bell" aria-hidden="true"><svg><use href="#i-bell"/></svg></span>
+          <div class="arch__window">
+            <img class="arch__img" data-hero-img src="assets/images/original/character-sheet.webp" width="2000" height="1415" alt="Anise ร่าง Original — ภาพเต็มตัวจาก Character Sheet" fetchpriority="high" decoding="async">
+          </div>
+          <span class="arch__line arch__line--1" aria-hidden="true"></span>
+          <span class="arch__line arch__line--2" aria-hidden="true"></span>
+        </div>
+        <p class="hero__ja" lang="ja" data-bind="fullNameJa" aria-label="ชื่อภาษาญี่ปุ่น"></p>
+        <span class="hanko" aria-hidden="true"><svg><use href="#i-bell"/></svg></span>
+        <div class="hero__art-meta">
+          <span class="badge" data-form-badge>Original Form</span>
+          <button class="linkbtn" type="button" data-open-hero>ดูภาพเต็ม <span aria-hidden="true">↗</span></button>
+        </div>
+      </div>
+
+      <a class="hero__scroll" href="#profil" data-nav aria-label="เลื่อนลงไปยังโปรไฟล์">
+        <span aria-hidden="true"></span>
+      </a>
+    </section>
+
+    <!-- ===================== 02 · PROFIL ===================== -->
+    <section class="section profil" id="profil" aria-labelledby="profil-title">
+      <header class="sec-head reveal">
+        <p class="sec-head__num">N° 02</p>
+        <h2 class="sec-head__title" id="profil-title"><span lang="fr">Profil</span></h2>
+        <p class="sec-head__th">ข้อมูลตัวละคร</p>
+        <svg class="flourish" aria-hidden="true"><use href="#i-flourish"/></svg>
+      </header>
+
+      <div class="profil__grid">
+        <aside class="profil__side reveal">
+          <figure class="portrait">
+            <button class="portrait__btn" type="button" data-open-portrait data-cursor="gallery" aria-label="ขยายภาพตัวละคร">
+              <img data-portrait-img src="assets/images/original/chibi-adoptable-960.webp" width="679" height="960" alt="Anise ร่าง Original — ภาพ Chibi Adoptable" loading="lazy" decoding="async">
+            </button>
+            <figcaption><span class="badge" data-form-badge>Original Form</span> <span data-portrait-credit></span></figcaption>
+          </figure>
+
+          <div class="furry-card" data-furry-card hidden>
+            <p class="furry-card__eyebrow">Furry Form · ข้อมูลเฉพาะ</p>
+            <dl class="furry-card__list" data-furry-list></dl>
+            <p class="furry-card__note">ข้อมูลเฉพาะของ Furry Form แสดงเฉพาะที่เจ้าของตัวละครส่งมา — ช่องที่ยังว่างคือยังไม่ได้รับข้อมูล<br>ข้อมูลพื้นฐานและประวัติยึดตามข้อมูลต้นฉบับ</p>
+          </div>
+        </aside>
+
+        <div class="profil__main">
+          <div class="carte reveal">
+            <p class="official-tag"><svg aria-hidden="true"><use href="#i-praja"/></svg> ข้อมูลพื้นฐาน · จากต้นฉบับของเจ้าของตัวละคร</p>
+            <dl class="carte__list" data-profile-list></dl>
+          </div>
+
+          <div class="names reveal">
+            <h3 class="minor-title"><span lang="fr">Les Noms</span> · ชื่อและอัตลักษณ์ตัวละคร</h3>
+            <dl class="names__list" data-names-list></dl>
+          </div>
+
+          <div class="palette reveal">
+            <h3 class="minor-title"><span lang="fr">Crème Caramel</span> · สีประจำตัว</h3>
+            <p class="palette__sub">Creme Caramel Palette — สีจากภาพ Colour Palette ของตัวละคร</p>
+            <ul class="palette__main" data-palette-main></ul>
+            <ul class="palette__extra" data-palette-extra></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 03 · HISTOIRE ===================== -->
+    <section class="section histoire" id="histoire" aria-labelledby="histoire-title">
+      <header class="sec-head reveal">
+        <p class="sec-head__num">N° 03</p>
+        <h2 class="sec-head__title" id="histoire-title"><span lang="fr">Histoire</span></h2>
+        <p class="sec-head__th">ภูมิหลังตัวละคร</p>
+        <svg class="flourish" aria-hidden="true"><use href="#i-flourish"/></svg>
+      </header>
+
+      <div class="story">
+        <p class="story__ja" lang="ja" aria-hidden="true" data-bind="fullNameJa"></p>
+        <article class="story__body" data-story></article>
+      </div>
+    </section>
+
+    <!-- ===================== 04 · CARACTÈRE ===================== -->
+    <section class="section caractere" id="caractere" aria-labelledby="caractere-title">
+      <header class="sec-head reveal">
+        <p class="sec-head__num">N° 04</p>
+        <h2 class="sec-head__title" id="caractere-title"><span lang="fr">Caractère</span></h2>
+        <p class="sec-head__th">นิสัย · ความสามารถ · การพูด · สิ่งที่ชอบ · สิ่งที่ไม่ชอบ</p>
+        <svg class="flourish" aria-hidden="true"><use href="#i-flourish"/></svg>
+      </header>
+
+      <div class="tabs reveal" data-tabs>
+        <div class="tabs__list" role="tablist" aria-label="หมวดข้อมูลบุคลิก">
+          <button role="tab" id="tab-nisai" aria-controls="panel-nisai" aria-selected="true"><em>I</em>นิสัย</button>
+          <button role="tab" id="tab-ability" aria-controls="panel-ability" aria-selected="false" tabindex="-1"><em>II</em>ความสามารถ</button>
+          <button role="tab" id="tab-voice" aria-controls="panel-voice" aria-selected="false" tabindex="-1"><em>III</em>การพูด / น้ำเสียง</button>
+          <button role="tab" id="tab-likes" aria-controls="panel-likes" aria-selected="false" tabindex="-1"><em>IV</em>สิ่งที่ชอบ</button>
+          <button role="tab" id="tab-dislikes" aria-controls="panel-dislikes" aria-selected="false" tabindex="-1"><em>V</em>สิ่งที่ไม่ชอบ</button>
+        </div>
+
+        <div class="tabs__panel" role="tabpanel" id="panel-nisai" aria-labelledby="tab-nisai" tabindex="0">
+          <h3 class="visually-hidden">นิสัย</h3>
+          <ol class="traits" data-personality></ol>
+        </div>
+
+        <div class="tabs__panel" role="tabpanel" id="panel-ability" aria-labelledby="tab-ability" tabindex="0" hidden>
+          <h3 class="visually-hidden">ความสามารถ</h3>
+          <p class="panel-hint">กดที่ซองจดหมายเพื่อเปิดอ่าน</p>
+          <div class="letters" data-abilities></div>
+        </div>
+
+        <div class="tabs__panel" role="tabpanel" id="panel-voice" aria-labelledby="tab-voice" tabindex="0" hidden>
+          <h3 class="visually-hidden">การพูด / น้ำเสียง</h3>
+          <div class="voice">
+            <svg class="voice__wave" viewBox="0 0 600 80" preserveAspectRatio="none" aria-hidden="true">
+              <path class="voice__w voice__w--1" d="M0 40 Q 37.5 22 75 40 T 150 40 T 225 40 T 300 40 T 375 40 T 450 40 T 525 40 T 600 40 T 675 40 T 750 40"/>
+              <path class="voice__w voice__w--2" d="M0 40 Q 50 30 100 40 T 200 40 T 300 40 T 400 40 T 500 40 T 600 40 T 700 40 T 800 40"/>
+            </svg>
+            <p class="voice__text" data-voice></p>
+          </div>
+        </div>
+
+        <div class="tabs__panel" role="tabpanel" id="panel-likes" aria-labelledby="tab-likes" tabindex="0" hidden>
+          <h3 class="visually-hidden">สิ่งที่ชอบ</h3>
+          <ul class="chips chips--like" data-likes></ul>
+          <p class="chips__tail" data-likes-tail></p>
+        </div>
+
+        <div class="tabs__panel" role="tabpanel" id="panel-dislikes" aria-labelledby="tab-dislikes" tabindex="0" hidden>
+          <h3 class="visually-hidden">สิ่งที่ไม่ชอบ</h3>
+          <ul class="chips chips--dislike" data-dislikes></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 05 · PÂTISSERIE ===================== -->
+    <section class="section patisserie" id="patisserie" aria-labelledby="patisserie-title">
+      <div class="awning" aria-hidden="true"></div>
+      <header class="sec-head sec-head--shop reveal">
+        <p class="sec-head__num">N° 05</p>
+        <div class="shop-sign" data-shop-sign>
+          <span class="shop-sign__chain" aria-hidden="true"></span>
+          <button class="shop-sign__board" type="button" data-ring-bell aria-label="สั่นกระดิ่งหน้าร้าน La Cloche">
+            <span class="shop-sign__small" lang="fr">Pâtisserie d'antan</span>
+            <span class="shop-sign__name" lang="fr" id="patisserie-title">La Cloche</span>
+            <span class="shop-sign__th">ลา คลอช</span>
+          </button>
+          <span class="shop-sign__bell" aria-hidden="true"><svg><use href="#i-bell"/></svg></span>
+        </div>
+        <p class="decor-note">ส่วนนี้คือการออกแบบบรรยากาศร้านของเว็บไซต์ · ทุกรายการที่เกี่ยวกับ Anise ระบุที่มาจากข้อมูลตัวละครกำกับไว้</p>
+      </header>
+
+      <div class="vitrine">
+        <div class="vitrine__stage reveal" aria-live="polite">
+          <div class="stage">
+            <div class="stage__glow" aria-hidden="true"></div>
+            <div class="stage__dessert" data-stage-dessert aria-hidden="true"></div>
+            <svg class="stage__cloche" data-cloche viewBox="0 0 240 190" aria-hidden="true">
+              <path d="M28 168C28 98 66 50 120 50s92 48 92 118Z" fill="url(#g-glass)" stroke="#fff" stroke-opacity=".7" stroke-width="1.5"/>
+              <path d="M54 150c0-46 22-78 52-90" fill="none" stroke="#fff" stroke-opacity=".75" stroke-width="3" stroke-linecap="round"/>
+              <path d="M120 50v-14" stroke="#c99d60" stroke-width="3"/>
+              <circle cx="120" cy="30" r="8" fill="url(#g-gold)"/>
+              <path d="M24 168h192" stroke="#c99d60" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+            <svg class="stage__plate" viewBox="0 0 260 40" aria-hidden="true">
+              <ellipse cx="130" cy="16" rx="124" ry="13" fill="#fffaf2" stroke="#c99d60" stroke-width="1.5"/>
+              <ellipse cx="130" cy="15" rx="92" ry="8" fill="none" stroke="#edc693" stroke-width="1" stroke-dasharray="2 4"/>
+              <path d="M70 28h120l-10 9H80Z" fill="#e8d8c8"/>
+            </svg>
+          </div>
+          <div class="stage__caption" data-stage-caption>
+            <p class="stage__name" data-stage-name></p>
+            <div class="stage__refs" data-stage-refs></div>
+          </div>
+        </div>
+
+        <div class="vitrine__menu reveal">
+          <p class="vitrine__hint">เลือกขนมเพื่อยกฝาครอบแก้ว</p>
+          <ul class="desserts" data-desserts></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 06 · PARFUM ===================== -->
+    <section class="section parfum" id="parfum" aria-labelledby="parfum-title">
+      <canvas class="parfum__canvas" data-scent-canvas aria-hidden="true"></canvas>
+      <header class="sec-head sec-head--light reveal">
+        <p class="sec-head__num">N° 06</p>
+        <h2 class="sec-head__title" id="parfum-title"><span lang="fr">Parfum</span></h2>
+        <p class="sec-head__th">กลิ่นกาย</p>
+        <svg class="flourish" aria-hidden="true"><use href="#i-flourish"/></svg>
+      </header>
+
+      <div class="scent">
+        <div class="scent__notes" role="group" aria-label="องค์ประกอบกลิ่น" data-scent-notes></div>
+        <div class="scent__card reveal">
+          <svg class="scent__flacon" viewBox="0 0 80 110" aria-hidden="true">
+            <rect x="32" y="4" width="16" height="14" rx="3" fill="url(#g-gold)"/>
+            <rect x="35" y="18" width="10" height="8" fill="#c99d60"/>
+            <path d="M14 40c0-8 8-14 26-14s26 6 26 14v52c0 8-10 14-26 14S14 100 14 92Z" fill="#fff" fill-opacity=".1" stroke="#edc693" stroke-width="1.2"/>
+            <path d="M18 62c0 0 8 6 22 6s22-6 22-6v30c0 6-9 10-22 10S18 98 18 92Z" fill="#edc693" fill-opacity=".45"/>
+            <path d="M22 44v40" stroke="#fff" stroke-opacity=".5" stroke-width="2" stroke-linecap="round"/>
+            <use href="#i-bow" x="28" y="22" width="24" height="16"/>
+          </svg>
+          <p class="scent__title" data-scent-title></p>
+          <p class="scent__text" data-scent-text></p>
+          <p class="official-tag official-tag--light"><svg aria-hidden="true"><use href="#i-praja"/></svg> คำอธิบายกลิ่นกายฉบับเต็มจากต้นฉบับ</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 07 · GALERIE ===================== -->
+    <section class="section galerie" id="galerie" aria-labelledby="galerie-title">
+      <header class="sec-head reveal">
+        <p class="sec-head__num">N° 07</p>
+        <h2 class="sec-head__title" id="galerie-title"><span lang="fr">Galerie</span></h2>
+        <p class="sec-head__th">แกลเลอรีภาพตัวละคร</p>
+        <svg class="flourish" aria-hidden="true"><use href="#i-flourish"/></svg>
+      </header>
+      <div class="galerie__bar">
+        <div data-form-switch-slot="gallery"></div>
+        <p class="galerie__count" data-gallery-count aria-live="polite"></p>
+      </div>
+      <ul class="gallery" data-gallery></ul>
+      <p class="galerie__more" data-gallery-more hidden></p>
+      <p class="galerie__note">ภาพทั้งหมดแสดงตามต้นฉบับ ไม่ได้ลบลายน้ำหรือแก้ไขภาพ · กดที่ภาพเพื่อดูขนาดใหญ่</p>
+    </section>
+
+    <!-- ===================== 08 · CRÉDITS ===================== -->
+    <section class="section credits" id="credits" aria-labelledby="credits-title">
+      <header class="sec-head reveal">
+        <p class="sec-head__num">N° 08</p>
+        <h2 class="sec-head__title" id="credits-title"><span lang="fr">Crédits</span></h2>
+        <p class="sec-head__th">เครดิต</p>
+        <svg class="flourish" aria-hidden="true"><use href="#i-flourish"/></svg>
+      </header>
+
+      <div class="credits__grid">
+        <article class="credit-card reveal">
+          <p class="credit-card__eyebrow"><span lang="fr">Forme I</span> · Original Form</p>
+          <dl data-credits-original></dl>
+        </article>
+        <article class="credit-card reveal">
+          <p class="credit-card__eyebrow"><span lang="fr">Forme II</span> · Furry Form</p>
+          <dl data-credits-furry></dl>
+          <p class="credit-card__note">เครดิตตามข้อความที่ปรากฏบนภาพ Furry Design</p>
+        </article>
+        <article class="credit-card credit-card--site reveal">
+          <p class="credit-card__eyebrow"><span lang="fr">Site</span> · Website</p>
+          <dl>
+            <div><dt>Website Development</dt><dd data-credit-site></dd></div>
+            <div><dt>Music &amp; Sound</dt><dd>สังเคราะห์สดในเบราว์เซอร์ด้วยโค้ดของเว็บไซต์นี้ (Web Audio API) · ไม่มีไฟล์เพลงหรือเพลงที่มีลิขสิทธิ์</dd></div>
+            <div><dt>Fonts</dt><dd>Bodoni Moda · Jost · Noto Serif Thai · Shippori Mincho (Google Fonts, SIL Open Font License)</dd></div>
+          </dl>
+        </article>
+      </div>
+
+      <div class="usage reveal">
+        <p class="usage__title">ข้อความจากภาพต้นฉบับ</p>
+        <ul class="usage__list" data-usage></ul>
+        <p class="usage__body">ภาพตัวละครและการออกแบบเป็นลิขสิทธิ์ของนักวาดและเจ้าของตัวละคร ห้ามนำไปใช้โดยไม่ได้รับอนุญาต</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <svg class="footer__flourish" aria-hidden="true"><use href="#i-flourish"/></svg>
+    <p class="footer__brand"><span lang="fr">La Cloche</span> · Anise</p>
+    <p class="footer__credit">Website Development — <strong>TST Project</strong></p>
+    <p class="footer__small">Artwork © Kitty Catty · roro090(TH) · Adopt Owner: Jwala DuHin</p>
+    <a class="linkbtn footer__top" href="#accueil" data-nav>กลับขึ้นด้านบน <span aria-hidden="true">↑</span></a>
+  </footer>
+
+  <!-- ===== Audio controls ===== -->
+  <div class="audio-dock" role="group" aria-label="ควบคุมเสียง" data-audio-dock>
+    <button class="audio-dock__btn" type="button" aria-pressed="false" data-audio="music">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V6l10-2v12" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="6.5" cy="18" r="2.5" fill="currentColor"/><circle cx="16.5" cy="16" r="2.5" fill="currentColor"/></svg>
+      <span class="audio-dock__label">Music <b data-state>OFF</b></span>
+    </button>
+    <button class="audio-dock__btn" type="button" aria-pressed="false" data-audio="sfx">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-bell"/></svg>
+      <span class="audio-dock__label">Effects <b data-state>OFF</b></span>
+    </button>
+    <label class="audio-dock__vol">
+      <span class="visually-hidden">ระดับเสียง</span>
+      <input type="range" min="0" max="100" step="1" value="60" data-audio="volume" aria-valuetext="60%">
+    </label>
+  </div>
+
+  <!-- ===== Lightbox ===== -->
+  <div class="lightbox" data-lightbox role="dialog" aria-modal="true" aria-labelledby="lb-title" hidden>
+    <div class="lightbox__scrim" data-lb-close></div>
+    <figure class="lightbox__figure">
+      <div class="lightbox__frame" data-lb-frame>
+        <img data-lb-img alt="">
+      </div>
+      <figcaption class="lightbox__cap">
+        <span class="badge" data-lb-badge></span>
+        <strong id="lb-title" data-lb-title></strong>
+        <span data-lb-kind></span>
+        <span class="lightbox__credit" data-lb-credit></span>
+        <a class="linkbtn" data-lb-full target="_blank" rel="noopener">เปิดไฟล์ต้นฉบับ <span aria-hidden="true">↗</span></a>
+      </figcaption>
+    </figure>
+    <button class="lightbox__nav lightbox__nav--prev" type="button" data-lb-prev aria-label="ภาพก่อนหน้า">‹</button>
+    <button class="lightbox__nav lightbox__nav--next" type="button" data-lb-next aria-label="ภาพถัดไป">›</button>
+    <button class="lightbox__close" type="button" data-lb-close aria-label="ปิดภาพ">×</button>
+  </div>
+
+  <div class="visually-hidden" role="status" aria-live="polite" data-announcer></div>
+
+  <script src="js/character-data.js?v=5" defer></script>
+  <script src="js/media-data.js?v=5" defer></script>
+  <script src="js/audio.js?v=5" defer></script>
+  <script src="js/cursor.js?v=5" defer></script>
+  <script src="js/main.js?v=5" defer></script>
+</body>
+</html>
