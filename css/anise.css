@@ -858,6 +858,8 @@ a { color: var(--chocolate); }
 .audio-dock__vol { display: flex; align-items: center; padding: 0 10px 0 6px; }
 .audio-dock__vol input { width: 84px; accent-color: var(--chocolate); cursor: pointer; height: 28px; }
 .audio-dock.is-playing [data-audio="music"] svg { animation: note-bob 1.8s var(--ease-soft) infinite; }
+.audio-dock.is-waiting [data-audio="music"] { animation: dock-glow 1.6s var(--ease-soft) infinite; }
+@keyframes dock-glow { 0%, 100% { box-shadow: 0 0 0 0 rgba(224, 155, 5, 0); } 50% { box-shadow: 0 0 0 4px rgba(224, 155, 5, .45); } }
 @keyframes note-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
 @media (max-width: 520px) {
   .audio-dock__label { font-size: 0; letter-spacing: 0; }

@@ -806,6 +806,10 @@
   const vol = $('[data-audio="volume"]', dock);
   musicBtn.dataset.sfx = 'none'; sfxBtn.dataset.sfx = 'none';
 
+  // read the earlier choice before onChange below overwrites it with the current (off) state
+  const wasMusic = store.get('anise-music') === '1';
+  const wasSfx = store.get('anise-sfx') === '1';
+
   if (!Audio || !Audio.supported) {
     dock.hidden = true;
   } else {
@@ -818,6 +822,8 @@
       const pct = Math.round(st.volume * 100);
       if (+vol.value !== pct) vol.value = pct;
       vol.setAttribute('aria-valuetext', pct + '%');
+      if (st.musicOn || st.sfxOn) dock.classList.remove('is-waiting');
+      store.set('anise-music', st.musicOn ? '1' : '0');
       store.set('anise-sfx', st.sfxOn ? '1' : '0');
     });
     musicBtn.addEventListener('click', () => {
@@ -831,10 +837,18 @@
       announce(on ? 'เปิดเสียงเอฟเฟกต์' : 'ปิดเสียงเอฟเฟกต์');
     });
     vol.addEventListener('input', () => Audio.setVolume(vol.value / 100));
-    // returning in the same session: effects stay as chosen (they only play on clicks); music waits for a press
-    if (store.get('anise-sfx') === '1') {
-      const resume = () => { Audio.setSfx(true); };
-      document.addEventListener('pointerdown', resume, { once: true, capture: true });
+    // returning in the same session (reload): browsers need a fresh press before audio may start,
+    // so the visitor's earlier choice resumes on their first tap/click/key, and the Music button glows until then
+    if (wasMusic || wasSfx) {
+      dock.classList.add('is-waiting');
+      const resume = (e) => {
+        document.removeEventListener('pointerdown', resume, true);
+        document.removeEventListener('keydown', resume, true);
+        if (e.target.closest && e.target.closest('[data-audio]')) { dock.classList.remove('is-waiting'); return; }
+        Audio.enable({ music: wasMusic, sfx: wasSfx });
+      };
+      document.addEventListener('pointerdown', resume, true);
+      document.addEventListener('keydown', resume, true);
     }
   }
 
